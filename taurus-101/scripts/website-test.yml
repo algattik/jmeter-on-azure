@@ -6,8 +6,12 @@ modules:
     - jmeter.backendlistener.azure
 
 execution:
-- scenario: simple
+- scenario: website-test
 
 scenarios:
-  simple:
+  website-test:
     script: website-test.jmx
+
+reporting:
+- module: junit-xml
+  filename: /tmp/artifacts/jmeter.xml

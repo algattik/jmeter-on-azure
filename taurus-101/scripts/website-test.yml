@@ -1,0 +1,13 @@
+modules:
+  jmeter:
+    path: /jmeter
+    version: 5.2.1
+    plugins:
+    - jmeter.backendlistener.azure
+
+execution:
+- scenario: simple
+
+scenarios:
+  simple:
+    script: website-test.jmx

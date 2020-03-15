@@ -11,6 +11,8 @@ steps:
     cd taurus-101
     ./run-test-on-docker.sh
   displayName: Run JMeter in Taurus
+  env:
+    INSTRUMENTATION_KEY: $(INSTRUMENTATION_KEY)
 
 - task: PublishBuildArtifacts@1
   displayName: Publish JMeter report to Azure Pipelines

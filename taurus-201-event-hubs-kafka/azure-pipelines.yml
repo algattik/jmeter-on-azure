@@ -14,6 +14,9 @@ steps:
     cd taurus-201-event-hubs-kafka
     ./run-test-on-docker.sh
   displayName: Run JMeter in Taurus
+  env:
+    EVENT_HUBS_CONNECTION_STRING: $(EVENT_HUBS_CONNECTION_STRING)
+    INSTRUMENTATION_KEY: $(INSTRUMENTATION_KEY)
 
 - task: PublishBuildArtifacts@1
   displayName: Publish JMeter report to Azure Pipelines

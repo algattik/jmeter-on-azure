@@ -8,6 +8,12 @@ modules:
 execution:
 - scenario: website-test
 
+# Generate HTML report, see https://stackoverflow.com/questions/51955998
+services:
+- module: shellexec
+  post-process:
+  - /jmeter/bin/jmeter -Jjmeter.save.saveservice.assertion_results_failure_message=false -g ${TAURUS_ARTIFACTS_DIR}/kpi.jtl -o ${TAURUS_ARTIFACTS_DIR}/report -q ${TAURUS_ARTIFACTS_DIR}/jmeter-bzt.properties 
+
 scenarios:
   website-test:
     script: website-test.jmx

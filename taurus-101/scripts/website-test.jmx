@@ -7,7 +7,18 @@
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-        <collectionProp name="Arguments.arguments"/>
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="APP_INSIGHTS_INSTRUMENTATION_KEY" elementType="Argument">
+            <stringProp name="Argument.name">APP_INSIGHTS_INSTRUMENTATION_KEY</stringProp>
+            <stringProp name="Argument.value">${__P(APP_INSIGHTS_INSTRUMENTATION_KEY)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="TEST_SITE" elementType="Argument">
+            <stringProp name="Argument.name">TEST_SITE</stringProp>
+            <stringProp name="Argument.value">${__P(TEST_SITE,www.bing.com)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
@@ -30,7 +41,7 @@
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">${__env(TEST_SITE,,${__P(TEST_SITE,bing.com)})}</stringProp>
+          <stringProp name="HTTPSampler.domain">${TEST_SITE}</stringProp>
           <stringProp name="HTTPSampler.port">80</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -56,7 +67,7 @@
             </elementProp>
             <elementProp name="instrumentationKey" elementType="Argument">
               <stringProp name="Argument.name">instrumentationKey</stringProp>
-              <stringProp name="Argument.value">${__env(APP_INSIGHTS_INSTRUMENTATION_KEY,,${__P(APP_INSIGHTS_INSTRUMENTATION_KEY)})}</stringProp>
+              <stringProp name="Argument.value">${APP_INSIGHTS_INSTRUMENTATION_KEY}</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="liveMetrics" elementType="Argument">

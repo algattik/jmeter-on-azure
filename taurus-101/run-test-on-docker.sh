@@ -11,6 +11,6 @@ docker run \
   --rm \
   -v $PWD/scripts:/bzt-configs \
   -v $PWD/artifacts:/tmp/artifacts \
-  -e APP_INSIGHTS_INSTRUMENTATION_KEY="$INSTRUMENTATION_KEY" \
   blazemeter/taurus \
+  -o modules.jmeter.properties.APP_INSIGHTS_INSTRUMENTATION_KEY="$INSTRUMENTATION_KEY" \
   website-test.yml               

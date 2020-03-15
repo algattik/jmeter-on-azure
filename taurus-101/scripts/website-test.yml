@@ -2,6 +2,7 @@ modules:
   jmeter:
     path: /jmeter
     version: 5.2.1
+    download-link: https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-{version}.zip
     plugins:
     - jmeter.backendlistener.azure
 

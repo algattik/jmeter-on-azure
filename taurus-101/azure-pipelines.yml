@@ -4,6 +4,9 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+- group: jmeter-on-azure
+
 steps:
 
 - script: |

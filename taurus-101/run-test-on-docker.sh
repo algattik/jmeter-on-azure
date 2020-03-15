@@ -1,8 +1,7 @@
 #!/bin/sh
 
 if test -z "$INSTRUMENTATION_KEY"; then
-  echo "Please set the environment variable INSTRUMENTATION_KEY to your Application Insights instrumentation key"
-  exit 1
+  echo "To publish live data to Application Insights, set the environment variable INSTRUMENTATION_KEY to your Application Insights instrumentation key" >&2
 fi
 
 set -eux

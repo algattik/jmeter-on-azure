@@ -1,0 +1,24 @@
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- script: |
+    set -eux
+    cd taurus-101
+    ./run-test-on-docker.sh
+  displayName: Run JMeter in Taurus
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish JMeter report to Azure Pipelines
+  inputs:
+    pathtoPublish: taurus-101/artifacts/report
+    artifactName: Taurus-101-$(Build.BuildId)
+
+- task: PublishTestResults@2
+  displayName: Publish test results to Azure Pipelines
+  inputs:
+    failTaskOnFailedTests: true

@@ -6,6 +6,10 @@ modules:
     plugins:
     - jmeter.backendlistener.azure
 
+scenarios:
+  website-test:
+    script: website-test.jmx
+
 execution:
 - scenario: website-test
   concurrency: 5
@@ -22,10 +26,6 @@ services:
     && cp kpi.jtl kpi.csv
     && /jmeter/bin/jmeter -Jjmeter.save.saveservice.assertion_results_failure_message=false -g kpi.csv -o report -q jmeter-bzt.properties
 
-scenarios:
-  website-test:
-    script: website-test.jmx
-
 reporting:
 - module: junit-xml
-  filename: /tmp/artifacts/jmeter.xml
+  filename: /tmp/artifacts/TEST-jmeter.xml

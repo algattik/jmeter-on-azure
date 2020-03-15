@@ -34,4 +34,6 @@ The sample demonstrates integrating JMeter with Azure Application Insights to ge
 
 ![Application Insights dashboard](docs/images/azure-application-insights-overview.png)
 
+## [Taurus 201: Event Hubs Kafka](taurus-201-event-hubs-kafka)
 
+In the next sample we demonstrate connecting to Kafka (in this case, Azure Event Hubs exposing the Kafka protocol) through custom code.

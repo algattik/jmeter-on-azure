@@ -16,7 +16,7 @@ steps:
   displayName: Publish JMeter report to Azure Pipelines
   inputs:
     pathtoPublish: taurus-101/artifacts/report
-    artifactName: Taurus-101-$(Build.BuildId)
+    artifactName: taurus-101-$(Build.BuildId)
 
 - task: PublishTestResults@2
   displayName: Publish test results to Azure Pipelines

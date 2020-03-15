@@ -8,11 +8,11 @@ modules:
 
 execution:
 - scenario:
-    script: website-test.jmx
+    script: kafka-test.jmx
+    properties:
+      user.classpath: /user-jars/kafka-clients-uber-jar-0.0.1.jar
   concurrency: 5
-  iterations: 10
-  hold-for: 10s
-  ramp-up: 2s
+  iterations: 2000
 
 # Generate HTML report, see https://stackoverflow.com/questions/51955998
 services:

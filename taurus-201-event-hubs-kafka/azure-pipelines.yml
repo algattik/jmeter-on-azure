@@ -1,0 +1,27 @@
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  group: jmeter-on-azure
+
+steps:
+
+- script: |
+    set -eux
+    cd taurus-201-event-hubs-kafka
+    ./run-test-on-docker.sh
+  displayName: Run JMeter in Taurus
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish JMeter report to Azure Pipelines
+  inputs:
+    pathtoPublish: taurus-201-event-hubs-kafka/artifacts/report
+    artifactName: taurus-201-event-hubs-kafka-$(Build.BuildId)
+
+- task: PublishTestResults@2
+  displayName: Publish test results to Azure Pipelines
+  inputs:
+    failTaskOnFailedTests: true

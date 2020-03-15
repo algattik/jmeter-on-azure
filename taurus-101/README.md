@@ -44,7 +44,10 @@ You can also dig into the logs (`requests` collection) and generate charts and d
 
 ## Running in Azure Pipelines
 
-Import the file [azure-pipelines.yml](../azure-pipelines.yml) into Azure DevOps Pipelines. Optionally, set the INSTRUMENTATION_KEY pipeline variable to get live results in Application Insights.
+In Azure DevOps, create a Variable Group named `jmeter-on-azure`.
+In the variable group, set the INSTRUMENTATION_KEY variable to get live results in Application Insights.
+
+Import the file [azure-pipelines.yml](azure-pipelines.yml) into Azure DevOps Pipelines.
 
 The pipeline run shows detailed output, integrates test results, and generates an HTML report as an attached artifact.
 
@@ -106,24 +109,18 @@ modules:
     - jmeter.backendlistener.azure
 ```
 
-The `scenarios` section configures the list of scenarios to run.
+The `execution` section configures scenario execution plans. Here we configure concurrent execution of 5 clients for 10 iterations for 10 seconds.
 
-```
-scenarios:
-  website-test:
-    script: website-test.jmx
-```
-
-The `execution` section configures scenario execution plans. Here we configure concurrent execution of 5 clients for 10 seconds.
-
-Note that we could also have configured this in JMeter, but keeping execution plans declarative and separate from the JMeter plan ensures better maintainability.
+At execution, Taurus overwrites the values in the JMeter Test plan (Thread Group) with the values defined here.
 
 ```
 execution:
-- scenario: website-test
+- scenario:
+    script: website-test.jmx
   concurrency: 5
-  hold-for: 600s
-  ramp-up: 360s
+  iterations: 10
+  hold-for: 10s
+  ramp-up: 2s
 ```
 
 Under `services`, we configure a post-processing step in order to generate an HTML report.
